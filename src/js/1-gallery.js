@@ -89,5 +89,7 @@ const markup = images
 galleryElCollection.innerHTML = markup;
 // ====================================================================== library
 const lightbox = new SimpleLightbox('.gallery a', {
-  animationSpeed: 250,
+  captionType: 'a',
+  captionsData: 'alt',
+  captionDelay: 250,
 });
