@@ -5,3 +5,19 @@
   |============================
 */
 @import url('./reset.css');
+
+.gallery-image {
+  width: 320px;
+  height: 200px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  row-gap: 24px;
+}
+
+.gallery-link {
+  text-decoration: none;
+}
