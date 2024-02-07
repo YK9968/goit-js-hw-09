@@ -3,32 +3,34 @@
 const localStorageKey = 'feedback-form-state';
 
 const formEl = document.querySelector('.feedback-form');
-const inputEl = formEl.elements.email;
-const textareaEl = formEl.elements.message;
+const emailInput = formEl.elements.email;
+const messageTextarea = formEl.elements.message;
 // ========================================================================== input
 formEl.addEventListener('input', onInputValue);
 
 function onInputValue(evt) {
   evt.preventDefault();
   const userinfo = {
-    email: `${inputEl.value.trim()}`,
-    message: `${textareaEl.value.trim()}`,
+    email: emailInput.value.trim(),
+    message: messageTextarea.value.trim(),
   };
   localStorage.setItem(localStorageKey, JSON.stringify(userinfo));
 }
 // ===================================================================== save info
 const rowData = localStorage.getItem(localStorageKey);
-if (rowData !== '') {
+if (rowData !== null) {
   const data = JSON.parse(rowData);
-  inputEl.value = data.email;
-  textareaEl.value = data.message;
+  emailInput.value = data.email;
+  messageTextarea.value = data.message;
 }
 // ==================================================================== submit
 formEl.addEventListener('submit', onClickBtn);
 
 function onClickBtn(evt) {
   evt.preventDefault();
-  if (inputEl.value === '' || textareaEl.value === '') {
+  const email = emailInput.value.trim();
+  const message = messageTextarea.value.trim();
+  if (email === '' || message === '') {
     return;
   }
   console.log(JSON.parse(localStorage.getItem(localStorageKey)));
